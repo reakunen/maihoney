@@ -2,7 +2,7 @@
 
 Website URL: [maihoney.com](https://maihoney.com/)
 
-Planning on launching a E-Commerce website somewhere in the future to sell my honey from the beekeeping activities... 
+Planning on launching a E-Commerce website somewhere in the future to sell honey from the beekeeping activities when I am not coding... 
 
 
 
