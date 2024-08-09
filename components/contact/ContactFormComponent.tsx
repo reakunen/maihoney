@@ -27,13 +27,6 @@ export default function ContactFormComponent() {
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-		const formData = new FormData(event.target as HTMLFormElement)
-
-		formData.append('access_key', process.env.NEXT_PUBLIC_CONTACT_KEY!)
-
-		const object = Object.fromEntries(formData)
-		const json = JSON.stringify(object)
-		console.log(json)
 		try {
 			const response = await fetch('https://api.web3forms.com/submit', {
 				method: 'POST',
@@ -41,7 +34,12 @@ export default function ContactFormComponent() {
 					'Content-Type': 'application/json',
 					Accept: 'application/json',
 				},
-				body: json,
+				body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_CONTACT_KEY!,
+          name: formValues.name,
+          email: formValues.email,
+          message: formValues.message,
+        }),
 			})
       const result = await response.json()
 		if (result.success) {
@@ -113,7 +111,7 @@ export default function ContactFormComponent() {
 					rows={5}
 					value={formValues.message}
 					onChange={handleChange}
-					placeholder="Hi I'd like to buy honey in person!"
+					placeholder="Hi there, I'd like to buy honey in person!"
 				/>
 			</div>
 			<Button type="submit" className="w-full">

@@ -25,6 +25,7 @@ export default function HomePage() {
 
 	return (
 		<main className="bg-[#ececec]">
+			{/* <PageLoader /> */}
 			<Intro />
 			<Description />
 			<Section />

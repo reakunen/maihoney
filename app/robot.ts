@@ -5,7 +5,7 @@ export default function robot(): MetadataRoute.Robots {
 		rules: {
 			userAgent: '*',
 			allow: '/',
-			disallow: ['/api/checkout-sessions'],
+			disallow: ['/api/checkout-session', '/404'],
 		},
 		sitemap: 'https://www.maihoney.com/sitemap.xml',
 	}

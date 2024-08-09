@@ -13,6 +13,7 @@ export default function OurStoryPage() {
           style={{ objectFit: 'cover' }}
         />
       </div>
+      DAmn
     </main>
   );
 }

@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import { FiMenu, FiArrowRight, FiX, FiShoppingCart } from 'react-icons/fi'
 import Link from 'next/link'
 import HoneyComb from './honeycomb'
-import NavLinks from '@/constants/navlinks'
+import {NavLinks, MobileNavLinks} from '@/constants/navlinks'
 import {
 	useMotionValueEvent,
 	AnimatePresence,
@@ -140,7 +140,7 @@ const MobileMenu = () => {
 							</button>
 						</div>
 						<div className="h-screen overflow-y-scroll bg-neutral-100 p-6">
-							{NavLinks.map((l : any) => (
+							{MobileNavLinks.map((l : any) => (
 								<MobileMenuLink
 									key={l.text}
 									href={l.href}

@@ -3,12 +3,14 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
 import { CartProvider } from 'use-shopping-cart'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://www.maihoney.com'),
 	keywords: [
+		'buy honey',
 		'honey',
 		'maihoney',
 		'selling honey',
@@ -48,6 +50,7 @@ export default function RootLayout({
 					shouldPersist={true}
 				>
 					<main>{children}</main>
+					<Analytics mode={'production'} />
 					<Toaster />
 				</CartProvider>
 			</body>
