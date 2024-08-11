@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Products() {
   return (
-    <div>Products</div>
+    <div>
+      Currently we only have one 
+    </div>
   )
 }

@@ -12,7 +12,7 @@ export default function CartPage() {
 					style={{ objectFit: 'cover' }}
 				/>
 				<div className="absolute inset-0 flex items-center justify-center">
-					<h1 className="text-white max-sm:text-[1.5rem] text-[3rem] font-bold">
+					<h1 className="text-white max-sm:text-[2.5rem] text-[3rem] font-bold">
 						Cart
 					</h1>
 				</div>

@@ -24,7 +24,6 @@ export default function ProductPage() {
 					</div>
 				</div>
 			</main>
-			Done bro
 		</>
 	)
 }

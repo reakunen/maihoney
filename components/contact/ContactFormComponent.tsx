@@ -27,6 +27,22 @@ export default function ContactFormComponent() {
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
+		// Validation
+		if (
+			!formValues.email ||
+			!formValues.name ||
+			!formValues.phone ||
+			!formValues.message
+		) {
+			toast('Error', {
+				description: 'All fields must be filled out',
+				action: {
+					label: <XIcon fontSize={4} />,
+					onClick: () => {},
+				},
+			})
+			return
+		}
 		try {
 			const response = await fetch('https://api.web3forms.com/submit', {
 				method: 'POST',
@@ -35,34 +51,34 @@ export default function ContactFormComponent() {
 					Accept: 'application/json',
 				},
 				body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_CONTACT_KEY!,
-          name: formValues.name,
-          email: formValues.email,
-          message: formValues.message,
-        }),
+					access_key: process.env.NEXT_PUBLIC_CONTACT_KEY!,
+					name: formValues.name,
+					email: formValues.email,
+					message: formValues.message,
+				}),
 			})
-      const result = await response.json()
-		if (result.success) {
-			console.log(result)
-			toast('Success!', {
-				description: 'Your message has been sent!',
-				action: {
-					label: 'Undo',
-					onClick: () => console.log('Undo'),
-				},
-			})
-			setFormValues({
-				name: '',
-				phone: '',
-				email: '',
-				message: '',
-			})
-		} else {
-      throw new Error("Error")
-		}
-		} catch (e) {
+			const result = await response.json()
+			if (result.success) {
+				console.log(result)
+				toast('Success!', {
+					description: 'Your message has been sent!',
+					action: {
+						label: 'Undo',
+						onClick: () => console.log('Undo'),
+					},
+				})
+				setFormValues({
+					name: '',
+					phone: '',
+					email: '',
+					message: '',
+				})
+			} else {
+				throw new Error('Error')
+			}
+		} catch (e: any) {
 			toast('Error', {
-				description: 'Please try again later.',
+				description: e.message || 'An error occurred',
 				action: {
 					label: <XIcon fontSize={4} />,
 					onClick: () => {},
@@ -74,7 +90,7 @@ export default function ContactFormComponent() {
 	return (
 		<form className="space-y-4" onSubmit={handleSubmit}>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<div className="space-y-2">
+				<div className="space-y-2 ">
 					<Label htmlFor="name">Name</Label>
 					<Input
 						id="name"
@@ -114,9 +130,10 @@ export default function ContactFormComponent() {
 					placeholder="Hi there, I'd like to buy honey in person!"
 				/>
 			</div>
-			<Button type="submit" className="w-full">
+			<button className="flex text-sm justify-center w-full items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+				{/* <FiShoppingCart fontSize={18} fontWeight={800} /> */}
 				Submit
-			</Button>
+			</button>
 		</form>
 	)
 }

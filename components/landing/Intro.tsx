@@ -10,8 +10,7 @@ export default function Intro() {
 		target: container,
 		offset: ['start start', 'end start'],
 	})
-	const words = ['better', 'cute', 'beautiful', 'modern']
-
+	const words = ['organic', 'pure', 'premium', 'natural', 'unfiltered']
 	const y = useTransform(scrollYProgress, [0, 1], ['0vh', '50vh'])
 
 	return (
@@ -37,8 +36,8 @@ export default function Intro() {
 				transition={{ duration: 1, ease: 'easeInOut' }}
 			>
 				<h1 className="text-white max-sm:text-4xl text-7xl font-bold w-[80vw]">
-					The variety of<FlipWords words={words} /> <br />
-					plants gives honey an expressive taste.
+					We make honey that is <FlipWords words={words} duration={2000}/> <br/>
+					and of the highest quality.
 				</h1>
 			</motion.div>
 			<motion.div

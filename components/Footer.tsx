@@ -1,81 +1,100 @@
 import Link from 'next/link'
-
-export default function FooterComponent() {
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import HoneyComb from './honeycomb'
+export default function Footer() {
 	return (
-		<footer className="bg-muted py-12">
-			<div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-				<div className="flex flex-col items-start gap-4">
-					<Link href="#" className="flex items-center gap-2" prefetch={false}>
-						<BeakerIcon className="w-8 h-8 text-primary" />
-						<span className="text-xl font-bold">Maihoney</span>
-					</Link>
-					<p className="text-muted-foreground">
+		<footer className="bg-[#F8F8F8] py-12 border-t border-[#E5E5E5]">
+			<div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+				<div className="flex flex-col gap-4">
+					<div className="flex items-center gap-0">
+						<span className="text-2xl font-bold text-[#333333]">maihoney</span>
+						<HoneyComb />
+					</div>
+					<p className="text-[#666666] text-sm">
 						Maihoney is a family-owned business that specializes in producing
-						high-quality honey products. We are committed to sustainable
-						beekeeping practices and delivering the best tasting honey to our
-						customers.
+						high-quality, all-natural honey. We are committed to sustainable
+						beekeeping practices and providing our customers with the best
+						possible honey experience.
 					</p>
 				</div>
-				<div className="grid grid-cols-2 gap-4">
-					<div className="grid gap-2">
-						<h3 className="text-lg font-semibold">Quick Links</h3>
+				<div className="flex flex-col gap-4">
+					<h3 className="text-[#333333] font-bold">Quick Links</h3>
+					<nav className="flex flex-col gap-2">
 						<Link
-							href="#"
-							className="text-muted-foreground hover:text-primary"
+							href="/"
+							className="text-[#666666] hover:text-[#F7A72D] transition-colors"
 							prefetch={false}
 						>
 							Home
 						</Link>
 						<Link
-							href="#"
-							className="text-muted-foreground hover:text-primary"
+							href="/about/"
+							className="text-[#666666] hover:text-[#F7A72D] transition-colors"
 							prefetch={false}
 						>
 							About
 						</Link>
 						<Link
-							href="#"
-							className="text-muted-foreground hover:text-primary"
+							href="/products"
+							className="text-[#666666] hover:text-[#F7A72D] transition-colors"
 							prefetch={false}
 						>
 							Products
 						</Link>
-						<Link
-							href="#"
-							className="text-muted-foreground hover:text-primary"
-							prefetch={false}
-						>
-							Contact
-						</Link>
-					</div>
-					<div className="grid gap-2">
-						<h3 className="text-lg font-semibold">Contact</h3>
-						<div className="flex items-center gap-2">
-							<PhoneIcon className="w-5 h-5 text-muted-foreground" />
-							<a href="#" className="text-muted-foreground hover:text-primary">
-								+1 (234) 567-890
-							</a>
-						</div>
-						<div className="flex items-center gap-2">
-							<MailIcon className="w-5 h-5 text-muted-foreground" />
-							<a href="#" className="text-muted-foreground hover:text-primary">
-								info@maihoney.com
-							</a>
-						</div>
-						<div className="flex items-center gap-2">
-							<MapPinIcon className="w-5 h-5 text-muted-foreground" />
-							<p className="text-muted-foreground">
-								123 Honey Lane, Beeville, CA 12345
-							</p>
-						</div>
-					</div>
+					</nav>
+				</div>
+				<div className="flex flex-col gap-4">
+					<h3 className="text-[#333333] font-bold">Newsletter</h3>
+					<p className="text-[#666666] text-sm">
+						Subscribe to our newsletter to receive updates and special offers.
+					</p>
+					<form className="flex gap-2">
+						<Input
+							type="email"
+							placeholder="Enter your email"
+							className="flex-1 bg-white border border-[#E5E5E5] rounded-md px-4 py-2 text-sm"
+						/>
+						<button className="text-sm flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4  text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+							Subscribe
+						</button>
+					</form>
+				</div>
+				<div className="flex flex-col gap-4">
+					<h3 className="text-[#333333] font-bold">Contact</h3>
+					<p className="text-[#666666] text-sm">
+						Phone: +1 (510) 501-0079
+						<br />
+						Email: brianm17055@gmail.com
+					</p>
+				</div>
+			</div>
+			<div className="container mx-auto px-4 md:px-6 mt-8 flex items-center justify-between">
+				<p className="text-[#666666] text-sm">
+					&copy; 2024 Maihoney. All rights reserved.
+				</p>
+				<div className="flex items-center gap-4">
+					<Link
+						href="#"
+						className="text-[#666666] hover:text-[#F7A72D] transition-colors"
+						prefetch={false}
+					>
+						Privacy Policy
+					</Link>
+					<Link
+						href="#"
+						className="text-[#666666] hover:text-[#F7A72D] transition-colors"
+						prefetch={false}
+					>
+						Terms of Service
+					</Link>
 				</div>
 			</div>
 		</footer>
 	)
 }
 
-function BeakerIcon(props: any) {
+function HexagonIcon(props: any) {
 	return (
 		<svg
 			{...props}
@@ -89,68 +108,7 @@ function BeakerIcon(props: any) {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 		>
-			<path d="M4.5 3h15" />
-			<path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
-			<path d="M6 14h12" />
-		</svg>
-	)
-}
-
-function MailIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<rect width="20" height="16" x="2" y="4" rx="2" />
-			<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-		</svg>
-	)
-}
-
-function MapPinIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-			<circle cx="12" cy="10" r="3" />
-		</svg>
-	)
-}
-
-function PhoneIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+			<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
 		</svg>
 	)
 }

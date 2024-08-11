@@ -109,7 +109,7 @@ const MobileMenuLink = ({
 				setMenuOpen(false)
 			}}
 			href={href}
-			className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold text-black"
+			className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold text-neutral-950"
 		>
 			<span>{children}</span>
 			<FiArrowRight />

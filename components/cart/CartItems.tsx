@@ -20,7 +20,7 @@ export default function CartItems() {
 	const [cart, setCart] = useState([
 		{
 			id: 1,
-      link: '/products/honey',
+			link: '/products/honey',
 			image: '/images/honey1.jpg',
 			name: 'Premium Raw Honey - 16 oz',
 			price: 15,
@@ -29,7 +29,7 @@ export default function CartItems() {
 		},
 		{
 			id: 2,
-      link: '/products/honey',
+			link: '/products/honey',
 			image: '/placeholder.svg',
 			name: 'Premium Raw Honey - 32 oz',
 			description: 'Delicious premium honey made from my backyard.',
@@ -38,7 +38,7 @@ export default function CartItems() {
 		},
 		{
 			id: 3,
-      link: '/products/honey',
+			link: '/products/honey',
 			image: '/public/.svg',
 			name: 'Fall Fragrance Candle',
 			description: 'Delicious premium honey made from my backyard.',
@@ -66,75 +66,79 @@ export default function CartItems() {
 
 	return (
 		<div className="container mx-auto px-4 md:px-6 py-12">
-			<h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
-			<div className="grid md:grid-cols-[1fr_380px] gap-8">
-				<div className="grid gap-6">
-					{cart.map((item) => (
-						<div
-							key={item.id}
-							className="grid grid-cols-[120px_1fr_auto] items-center gap-4"
-						>
-							<Link href={item.link}>
-								<Image
-									src={item.image}
-									alt={item.name}
-									width={120}
-									height={120}
-									className="rounded-lg object-cover"
-								/>
-							</Link>
-							<div className="grid gap-1">
-								<h3 className="font-semibold">{item.name}</h3>
-								{/* <p className="text-muted-foreground text-xs">
+			{/* <h1 className="text-2xl font-bold mb-8">Cart Items</h1> */}
+			{cart.length > 0 ? (
+				<div className="grid md:grid-cols-[1fr_380px] gap-8">
+					<div className="grid gap-6">
+						{cart.map((item) => (
+							<div
+								key={item.id}
+								className="grid grid-cols-[120px_1fr_auto] items-center gap-4"
+							>
+								<Link href={item.link}>
+									<Image
+										src={item.image}
+										alt={item.name}
+										width={120}
+										height={120}
+										className="rounded-lg object-cover"
+									/>
+								</Link>
+								<div className="grid gap-1">
+									<h3 className="font-semibold">{item.name}</h3>
+									{/* <p className="text-muted-foreground text-xs">
 										{item.description}
 									</p> */}
-								<p className="text-muted-foreground">
-									${item.price.toFixed(2)}
-								</p>
+									<p className="text-muted-foreground">
+										${item.price.toFixed(2)}
+									</p>
+								</div>
+								<div className="flex items-center gap-2">
+									<Input
+										type="number"
+										value={item.quantity}
+										onChange={(e) =>
+											handleQuantityChange(item.id, parseInt(e.target.value))
+										}
+										min={1}
+										className="w-16 text-center"
+									/>
+									<Button
+										size="icon"
+										variant="ghost"
+										onClick={() => handleRemoveItem(item.id)}
+									>
+										<TrashIcon className="w-4 h-4" />
+									</Button>
+								</div>
 							</div>
-							<div className="flex items-center gap-2">
-								<Input
-									type="number"
-									value={item.quantity}
-									onChange={(e) =>
-										handleQuantityChange(item.id, parseInt(e.target.value))
-									}
-									min={1}
-									className="w-16 text-center"
-								/>
-								<Button
-									size="icon"
-									variant="ghost"
-									onClick={() => handleRemoveItem(item.id)}
-								>
-									<TrashIcon className="w-4 h-4" />
-								</Button>
+						))}
+					</div>
+					<Card className="bg-[#fcfcfc]">
+						<CardHeader>
+							<CardTitle className="font-light">Order Summary</CardTitle>
+						</CardHeader>
+						<CardContent className="grid gap-4">
+							<div className="flex justify-between font-semibold">
+								<span>Total</span>
+								<span>${(subtotal + tax + shipping).toFixed(2)}</span>
 							</div>
-						</div>
-					))}
-				</div>
-				<Card className="bg-[#fcfcfc]">
-					<CardHeader>
-						<CardTitle className="font-light">Order Summary</CardTitle>
-					</CardHeader>
-					<CardContent className="grid gap-4">
-						<div className="flex justify-between font-semibold">
-							<span>Total</span>
-							<span>${(subtotal + tax + shipping).toFixed(2)}</span>
-						</div>
-						<Separator />
+							<Separator />
 
-						<div>
-							<span className="text-sm text-muted-foreground">
-								Shipping and taxes calculated at checkout.
-							</span>
-						</div>
-					</CardContent>
-					<CardFooter>
-						<Button className="w-full">Proceed to Checkout</Button>
-					</CardFooter>
-				</Card>
-			</div>
+							<div>
+								<span className="text-sm text-muted-foreground">
+									Shipping and taxes calculated at checkout.
+								</span>
+							</div>
+						</CardContent>
+						<CardFooter>
+							<Button className="w-full">Proceed to Checkout</Button>
+						</CardFooter>
+					</Card>
+				</div>
+			) : (
+				<h1 className='flex justify-center'>You have no items in your cart! </h1>
+			)}
 		</div>
 	)
 }
