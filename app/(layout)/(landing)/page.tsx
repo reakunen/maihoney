@@ -32,7 +32,7 @@ export default function HomePage() {
 			<div className="min-h-screen flex-col items-center justify-between">
 				<Products />
 			</div>
-			<Line />
+			{/* <Line /> */}
 		</main>
 	)
 }

@@ -119,6 +119,7 @@ export default function CartItems() {
 							<CardTitle className="font-light">Order Summary</CardTitle>
 						</CardHeader>
 						<CardContent className="grid gap-4">
+							
 							<div className="flex justify-between font-semibold">
 								<span>Total</span>
 								<span>${(subtotal + tax + shipping).toFixed(2)}</span>
@@ -131,8 +132,10 @@ export default function CartItems() {
 								</span>
 							</div>
 						</CardContent>
-						<CardFooter>
-							<Button className="w-full">Proceed to Checkout</Button>
+						<CardFooter className='flex flex-col'>
+							<button className="text-sm font-medium w-full flex justify-center *:items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+								Checkout
+							</button>{' '}
 						</CardFooter>
 					</Card>
 				</div>

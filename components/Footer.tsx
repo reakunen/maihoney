@@ -13,12 +13,12 @@ export default function Footer() {
 					</div>
 					<p className="text-[#666666] text-sm">
 						Maihoney is a family-owned business that specializes in producing
-						high-quality, all-natural honey. We are committed to sustainable
-						beekeeping practices and providing our customers with the best
-						possible honey experience.
+						high-quality, all-natural honey. #SaveTheBees
+
 					</p>
+
 				</div>
-				<div className="flex flex-col gap-4">
+				<div className="max-sm:hidden flex flex-col gap-4">
 					<h3 className="text-[#333333] font-bold">Quick Links</h3>
 					<nav className="flex flex-col gap-2">
 						<Link
@@ -55,12 +55,12 @@ export default function Footer() {
 							placeholder="Enter your email"
 							className="flex-1 bg-white border border-[#E5E5E5] rounded-md px-4 py-2 text-sm"
 						/>
-						<button className="text-sm flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4  text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+						<button className="text-sm font-medium flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
 							Subscribe
 						</button>
 					</form>
 				</div>
-				<div className="flex flex-col gap-4">
+				<div className="max-sm:hidden flex flex-col gap-4">
 					<h3 className="text-[#333333] font-bold">Contact</h3>
 					<p className="text-[#666666] text-sm">
 						Phone: +1 (510) 501-0079
@@ -73,7 +73,7 @@ export default function Footer() {
 				<p className="text-[#666666] text-sm">
 					&copy; 2024 Maihoney. All rights reserved.
 				</p>
-				<div className="flex items-center gap-4">
+				{/* <div className="flex items-center gap-4">
 					<Link
 						href="#"
 						className="text-[#666666] hover:text-[#F7A72D] transition-colors"
@@ -88,7 +88,7 @@ export default function Footer() {
 					>
 						Terms of Service
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</footer>
 	)

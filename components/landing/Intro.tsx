@@ -4,6 +4,7 @@ import Background from '@/public/images/img1.jpg'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { FaArrowDown } from 'react-icons/fa'
 import { FlipWords } from '../ui/flip-words'
+
 export default function Intro() {
 	const container = useRef(null)
 	const { scrollYProgress } = useScroll({

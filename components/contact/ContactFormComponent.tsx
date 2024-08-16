@@ -130,7 +130,7 @@ export default function ContactFormComponent() {
 					placeholder="Hi there, I'd like to buy honey in person!"
 				/>
 			</div>
-			<button className="flex text-sm justify-center w-full items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+			<button className="flex text-sm font-medium justify-center w-full items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
 				{/* <FiShoppingCart fontSize={18} fontWeight={800} /> */}
 				Submit
 			</button>

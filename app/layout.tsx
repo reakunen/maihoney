@@ -21,7 +21,8 @@ export const metadata: Metadata = {
 	],
 	title: 'MaiHoney',
 	openGraph: {
-		description: 'Natural, Organic, Unfiltered premium honey for you',
+		title: 'MaiHoney',
+		description: 'Natural, Organic, Unfiltered premium honey made in California',
 	},
 }
 

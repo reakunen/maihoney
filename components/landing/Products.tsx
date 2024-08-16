@@ -1,9 +1,10 @@
 import React from 'react'
+import Feature from './Feature'
 
 export default function Products() {
-  return (
-    <div>
-      Currently we only have one 
-    </div>
-  )
+	return (
+		<div>
+			<Feature />
+		</div>
+	)
 }
