@@ -27,25 +27,27 @@ export default function Feature() {
 				</div> */}
 				{/* <Card href={'/products'} desc={'swagalicious'} name={'honey'}/> */}
 				<div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out group hover:-translate-y-1 hover:shadow-xl">
-					<Link href="#" className="absolute inset-0 z-10" prefetch={false}>
-						<span className="sr-only">View Product</span>
-					</Link>
-					<Image
-						src="/images/honey1.jpg"
-						alt="Featured Product Honey"
-						width={800}
-						height={600}
-						className="h-64 w-full object-cover md:h-auto"
-						style={{ aspectRatio: '800/600', objectFit: 'cover' }}
-					/>
+					<div>
+						<Image
+							src="/images/honeyjar1.jpg"
+							alt="Featured Product Honey"
+							width={800}
+							height={600}
+							className="h-64 w-full object-cover md:h-auto"
+							style={{ aspectRatio: '700/600', objectFit: 'cover' }}
+						/>
+					</div>
+
 					<div className="bg-card p-6">
-						<h2 className="text-2xl font-bold">Natural Organic Honey</h2>
+						<h2 className="text-2xl font-bold">Honey Jar</h2>
 						<p className="mt-2 text-muted-foreground">
 							Indulge in nature&apos;s natural sweetener.
 						</p>
-						<Button size="lg" className="mt-6">
-							View Product
-						</Button>
+						<Link href="/products/16oz_jar_honey">
+							<Button size="lg" className="mt-6">
+								View Product
+							</Button>
+						</Link>
 					</div>
 				</div>
 				<motion.div
@@ -60,7 +62,7 @@ export default function Feature() {
 							Featured Product
 						</div>
 						<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-							Elevate Your Audio Experience
+							All Organic Honey.
 						</h2>
 						<p className="text-muted-foreground md:text-xl">
 							Discover our top-of-the-line wireless headphones, engineered for
@@ -73,14 +75,14 @@ export default function Feature() {
 							Buy Now
 						</button>{' '}
 						<Link
-							href="#"
+							href="/our-story"
 							className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
 							prefetch={false}
 						>
-							<button className="flex text-sm font-medium justify-center w-full items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
-								{/* <FiShoppingCart fontSize={18} fontWeight={800} /> */}
-								Submit
-							</button>{' '}
+							{/* <button className="flex text-sm font-medium justify-center w-full items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]"> */}
+							{/* <FiShoppingCart fontSize={18} fontWeight={800} /> */}
+							Learn More
+							{/* </button>{' '} */}
 						</Link>
 					</div>
 				</motion.div>

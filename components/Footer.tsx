@@ -12,8 +12,7 @@ export default function Footer() {
 						<HoneyComb />
 					</div>
 					<p className="text-[#666666] text-sm">
-						Maihoney is a family-owned business that specializes in producing
-						high-quality, all-natural honey. #SaveTheBees
+						We are beekeepers that produce honey in our backyard! #savethebees
 
 					</p>
 
@@ -29,18 +28,18 @@ export default function Footer() {
 							Home
 						</Link>
 						<Link
-							href="/about/"
+							href="/our-story"
 							className="text-[#666666] hover:text-[#F7A72D] transition-colors"
 							prefetch={false}
 						>
-							About
+							Our Story
 						</Link>
 						<Link
-							href="/products"
+							href="/contact"
 							className="text-[#666666] hover:text-[#F7A72D] transition-colors"
 							prefetch={false}
 						>
-							Products
+							Contact
 						</Link>
 					</nav>
 				</div>
@@ -65,7 +64,7 @@ export default function Footer() {
 					<p className="text-[#666666] text-sm">
 						Phone: +1 (510) 501-0079
 						<br />
-						Email: brianm17055@gmail.com
+						Email: contact@maihoney.com
 					</p>
 				</div>
 			</div>
@@ -91,24 +90,5 @@ export default function Footer() {
 				</div> */}
 			</div>
 		</footer>
-	)
-}
-
-function HexagonIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-		</svg>
 	)
 }

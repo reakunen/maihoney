@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Background from '@/public/images/img7.jpg'
-import CartItems from '@/components/cart/CartItems'
+
 export default function CartPage() {
 	return (
 		<main className="bg-white min-h-screen">
@@ -17,7 +17,7 @@ export default function CartPage() {
 					</h1>
 				</div>
 			</div>
-			<CartItems />
+			<div className='flex justify-center'>No Items in your cart!</div>
 		</main>
 	)
 }

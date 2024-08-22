@@ -4,7 +4,7 @@ import Background from '@/public/images/img1.jpg'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { FaArrowDown } from 'react-icons/fa'
 import { FlipWords } from '../ui/flip-words'
-
+import Video from 'next-video'
 export default function Intro() {
 	const container = useRef(null)
 	const { scrollYProgress } = useScroll({
@@ -23,6 +23,7 @@ export default function Intro() {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1, ease: 'easeInOut' }}
 			>
+				{/* <Video src={require("../../videos/cutting_honey.MOV")} autoPlay muted loop /> */}
 				<Image
 					src={Background}
 					layout="fill"

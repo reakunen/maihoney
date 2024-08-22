@@ -3,13 +3,14 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import { FiMenu, FiArrowRight, FiX, FiShoppingCart } from 'react-icons/fi'
 import Link from 'next/link'
 import HoneyComb from './honeycomb'
-import {NavLinks, MobileNavLinks} from '@/constants/navlinks'
+import { NavLinks, MobileNavLinks } from '@/constants/navlinks'
 import {
 	useMotionValueEvent,
 	AnimatePresence,
 	useScroll,
 	motion,
 } from 'framer-motion'
+import products from '@/constants/products'
 
 export const FlyoutNav = () => {
 	const [scrolled, setScrolled] = useState(false)
@@ -82,11 +83,14 @@ const NavLink = ({
 }
 
 const CTAs = () => {
+	
 	return (
 		<div className="flex items-center gap-3">
-			<Link href="/cart">
+			<Link href={products.payment_link}>
 				<button className="flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
 					<FiShoppingCart fontSize={18} fontWeight={800} />
+					{/* <NavCart /> */}
+					{/* Buy Now */}
 				</button>
 			</Link>
 		</div>
@@ -140,7 +144,7 @@ const MobileMenu = () => {
 							</button>
 						</div>
 						<div className="h-screen overflow-y-scroll bg-neutral-100 p-6">
-							{MobileNavLinks.map((l : any) => (
+							{MobileNavLinks.map((l: any) => (
 								<MobileMenuLink
 									key={l.text}
 									href={l.href}
