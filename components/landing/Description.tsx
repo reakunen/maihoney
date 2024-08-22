@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 
 export default function Description() {
 	// MaskText component definition
-	const phrases = ['Authentic.', 'Natural.', 'Organic.', 'Delicious.']
+	const phrases = ['Authentic', 'Natural', 'Organic', 'Delicious']
 
 	const animation = {
 		initial: { y: '100%' },

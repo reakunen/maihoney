@@ -1,6 +1,6 @@
 const products = {
-	payment_link: 'https://buy.stripe.com/test_7sI5o45licLvc4o148',
-	id: 'price_1McB1XC4V4bOyW0mEbCcuNPe',
+	payment_link: 'https://buy.stripe.com/9AQ5lgdmZb2NeOYdQQ',
+	id: 'prod_QhvHmLheY7XYdV',
 	image: [
 		'/images/honeybottle.png',
 		'/images/maihoney2.jpg',

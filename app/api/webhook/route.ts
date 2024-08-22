@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
 		// 	JSON.stringify(res?.data?.object?.billing_details), // Billing details
 		// 	res?.data?.object?.currency // Currency
 		// 
+		
 		switch (event.type) {
 			case 'charge.succeeded':
 				const { data, error } = await resend.emails.send({
