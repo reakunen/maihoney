@@ -111,7 +111,7 @@ export default function Products() {
 						<li>16oz of pure unfiltered honey</li>
 						<li>100% pure, raw, unfiltered honey</li>
 						<li>Sourced from my backyard in San Lorenzo, California</li>
-						<li>Shipping takes usually 5-7 business days</li>
+						<li>Shipping takes 5-7 business days</li>
 
 					</ul>
 				</div>

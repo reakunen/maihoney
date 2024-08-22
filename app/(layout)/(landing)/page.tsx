@@ -5,7 +5,6 @@ import Intro from '@/components/landing/Intro'
 import Description from '@/components/landing/Description'
 import Section from '@/components/landing/Section'
 import PageLoader from '@/components/page-loader'
-import Line from '@/components/line'
 import { Metadata } from 'next'
 import Products from '@/components/landing/Products'
 // import Footer from '@/components/Footer'
@@ -21,7 +20,6 @@ export default function HomePage() {
 			<div className="min-h-[90vh] flex-col items-center justify-between">
 				<Products />
 			</div>
-			{/* <Line /> */}
 		</main>
 	)
 }

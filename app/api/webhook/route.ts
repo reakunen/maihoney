@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 		const name = res?.data?.object?.billing_details?.name
 		const receipt_url = res?.data?.object?.receipt_url
 		const email = res?.data?.object?.billing_details?.email
-		let paid = res?.data?.paid 
+		let paid = res?.data?.paid
 		// console.log(
 		// 	res?.data?.object?.billing_details?.email, // email
 		// 	res?.data?.object?.amount, // amount
@@ -39,18 +39,22 @@ export async function POST(req: NextRequest) {
 		// 	JSON.stringify(res?.data?.object?.payment_method_details), // Payment method details
 		// 	JSON.stringify(res?.data?.object?.billing_details), // Billing details
 		// 	res?.data?.object?.currency // Currency
-		// )
-
-		const { data, error } = await resend.emails.send({
-			from: 'maihoney.com <noreply@maihoney.com>',
-			to: [email],
-			subject: 'Your maihoney receipt',
-			react: KoalaWelcomeEmail({ name, receipt_url }),
-		})
-
-		if (error) {
-			return res.status(400).json(error)
-		}
+		// 
+		switch (event.type) {
+			case 'charge.succeeded':
+				const { data, error } = await resend.emails.send({
+					from: 'maihoney.com <noreply@maihoney.com>',
+					to: [email],
+					subject: 'Your maihoney receipt',
+					react: KoalaWelcomeEmail({ name, receipt_url }),
+				})
+	
+				if (error) {
+					return res.status(400).json(error)
+				}
+			default:
+			  console.log(`Unhandled event type ${event.type}`);
+		  }
 
 		return NextResponse.json({
 			status: 'success',

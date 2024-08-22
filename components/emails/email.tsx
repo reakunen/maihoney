@@ -38,7 +38,7 @@ export const KoalaWelcomeEmail = ({
 		<Body style={main}>
 			<Container style={container}>
 				<Img
-					src={`${baseUrl}/email/maihoney.png`}
+					src={`${baseUrl}/logo/maihoneylogo.png`}
 					width="170"
 					height="50"
 					alt="maihoney"
@@ -49,16 +49,16 @@ export const KoalaWelcomeEmail = ({
 					Thank you for your purchase at maihoney! Your honey will be on its way
 					soon and should arrive within 5-7 business days. Enjoy the sweetness!
 				</Text>
-				<Text style={paragraph}>
-					If you have any questions or concerns please email contact@maihoney.com
-				</Text>
 				<Section style={btnContainer}>
 					<Button style={button} href={receipt_url}>
 						Your Receipt
 					</Button>
 				</Section>
 				<Text style={paragraph}>
-					Best,
+					If you have any questions or concerns, email contact@maihoney.com
+				</Text>
+				<Text style={paragraph}>
+					Thank you,
 					<br />
 					Brian &amp; Chris
 				</Text>
