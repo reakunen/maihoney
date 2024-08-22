@@ -38,6 +38,7 @@ export default function Section() {
 						style={{ objectFit: 'cover', opacity: 0.9 }}
 					/>
 				</motion.div>
+				<div className="absolute inset-0 bg-black opacity-30" />
 			</div>
 		</div>
 	)

@@ -16,7 +16,9 @@ export default function HomeLayout({
 					alt="image"
 					style={{ objectFit: 'cover' }}
 				/>
+				<div className="absolute inset-0 bg-black opacity-20"/>
 			</div>
+
 			{children}
 		</main>
 	)

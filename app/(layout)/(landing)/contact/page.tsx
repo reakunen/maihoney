@@ -13,10 +13,10 @@ export default function ContactPage() {
 					alt="image"
 					style={{ objectFit: 'cover' }}
 				/>
+				<div className="absolute inset-0 bg-black opacity-50" />
+				{/* Dark overlay */}
 				<div className="absolute inset-0 flex items-center justify-center">
-					<h1 className="text-white max-sm:text-[2.5rem] text-[3rem] font-bold">
-						
-					</h1>
+					<h1 className="text-white max-sm:text-[2.5rem] text-[3rem] font-bold"></h1>
 				</div>
 			</div>
 			<ContactForm />
