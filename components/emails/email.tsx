@@ -21,9 +21,7 @@ interface KoalaWelcomeEmailProps {
 	receipt_url: string
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_URL
-	? `https://${process.env.NEXT_PUBLIC_URL}`
-	: ''
+const baseUrl = process.env.NEXT_PUBLIC_URL!
 
 export const KoalaWelcomeEmail = ({
 	name,

@@ -25,7 +25,6 @@ export async function POST(req: NextRequest) {
 		const name = res?.data?.object?.billing_details?.name
 		const receipt_url = res?.data?.object?.receipt_url
 		const email = res?.data?.object?.billing_details?.email
-		let paid = res?.data?.paid
 		// console.log(
 		// 	res?.data?.object?.billing_details?.email, // email
 		// 	res?.data?.object?.amount, // amount
@@ -40,7 +39,7 @@ export async function POST(req: NextRequest) {
 		// 	JSON.stringify(res?.data?.object?.billing_details), // Billing details
 		// 	res?.data?.object?.currency // Currency
 		// 
-		
+
 		switch (event.type) {
 			case 'charge.succeeded':
 				const { data, error } = await resend.emails.send({

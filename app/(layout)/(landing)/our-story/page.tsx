@@ -96,7 +96,7 @@ export default function Component() {
 									Meet the Beekeepers
 								</h2>
 								<p className="max-w-[90vw] md:max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-									We&apos;re just a father and son who really love beekeeping!
+									We are a father and son duo who really love beekeeping!
 									It&apos;s our shared passion, and we take pride in caring for
 									our bees and bringing you the best honey straight from our
 									hives.

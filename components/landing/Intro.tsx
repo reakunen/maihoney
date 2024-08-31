@@ -11,7 +11,13 @@ export default function Intro() {
 		target: container,
 		offset: ['start start', 'end start'],
 	})
-	const words = ['organic', 'pure', 'premium', 'natural', 'unfiltered']
+	const words = [
+		'organic   ',
+		'pure      ',
+		'premium   ',
+		'natural   ',
+		'unfiltered',
+	]
 	const y = useTransform(scrollYProgress, [0, 1], ['0vh', '50vh'])
 
 	return (

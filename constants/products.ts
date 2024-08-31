@@ -3,8 +3,8 @@ const products = {
 	id: 'prod_QhvHmLheY7XYdV',
 	image: [
 		'/images/honeybottle.png',
-		'/images/maihoney2.jpg',
 		'/images/maihoney1.jpg',
+		'/images/maihoney2.jpg',
 	],
 	name: 'Premium Honey',
 	price: 1600,
