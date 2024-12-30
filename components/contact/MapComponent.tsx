@@ -15,7 +15,7 @@ export default function MapComponent() {
 	return (
 		<APIProvider
 			// apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
-			apiKey='AIzaSyAUuYn0wV5g-yhR4LkFbRC3xsi0ADT0alo'
+			apiKey='AIzaSyAUYaPM2PX7YIlY4Yj7TitSR7tM9o6nGLE'
 			onLoad={() => console.log('Maps API has loaded.')}
 		>
 			<Map
