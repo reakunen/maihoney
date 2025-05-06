@@ -10,7 +10,11 @@ import path from "path";
 import { existsSync } from "fs";
 
 // === Load the DB ===
-const dbPath = "./db/smallHoney.db"; // use "./db/smallHoney.db" or "./db/bigHoney.db"
+const dbPath = "./db/bigHoney.db"; // use "./db/smallHoney.db" or "./db/bigHoney.db"
+
+// small db has 100 rows
+// big db has 100,000 rows
+// db is in sqlite, use a vscode extension to view it
 
 // Verify file exists (optional)
 if (!existsSync(dbPath)) {
