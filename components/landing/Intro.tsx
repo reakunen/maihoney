@@ -45,7 +45,7 @@ export default function Intro() {
 				transition={{ duration: 1, ease: 'easeInOut' }}
 			>
 				<h1 className="text-white max-sm:text-4xl text-7xl font-bold w-[80vw]">
-					Yes, we make honey that is <FlipWords words={words} duration={2000} />{' '}
+					Big, we make honey that is <FlipWords words={words} duration={2000} />{' '}
 					<br />
 					and of the highest quality!!
 				</h1>
