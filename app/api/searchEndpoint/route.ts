@@ -5,6 +5,7 @@ import { Pool } from "pg";
 const pool = new Pool({
     connectionString:
         "postgresql://postgres.smzybsfugnnuhmyiozvt:Steadying-Eatable8-Mammogram@aws-0-us-west-1.pooler.supabase.com:5432/postgres", // DONT CHANGE THIS. ITS THE SAME CONNECTION URL FOR BOTH SMALL AND BIG DB
+    max: 20,
 });
 
 export async function GET(req: NextRequest) {
@@ -44,13 +45,12 @@ export async function GET(req: NextRequest) {
 
     const whereClause =
         conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
-    const query = `SELECT * FROM bigHoney ${whereClause};`; // Use smallHoney or bigHoney to change which db is should use
+    const query = `SELECT * FROM smallHoney ${whereClause};`; // Use smallHoney or bigHoney to change which db is should use
 
+    let client;
     try {
-        const client = await pool.connect();
+        client = await pool.connect();
         const result = await client.query(query, values);
-        client.release();
-
         return NextResponse.json(result.rows);
     } catch (error: any) {
         console.error("PostgreSQL query error:", error.message);
@@ -58,5 +58,7 @@ export async function GET(req: NextRequest) {
             { error: "Query failed", details: error.message },
             { status: 500 }
         );
+    } finally {
+        if (client) client.release();
     }
 }
