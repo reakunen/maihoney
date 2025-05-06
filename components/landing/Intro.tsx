@@ -47,7 +47,7 @@ export default function Intro() {
 				<h1 className="text-white max-sm:text-4xl text-7xl font-bold w-[80vw]">
 					We make honey that is <FlipWords words={words} duration={2000} />{' '}
 					<br />
-					and of the highest quality.
+					and of the highest quality!!
 				</h1>
 			</motion.div>
 			<motion.div
