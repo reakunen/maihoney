@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
     const name = searchParams.get("name");
     const origin = searchParams.get("origin");
     const q = searchParams.get("q");
-
+    
     const conditions: string[] = [];
     const values: any[] = [];
 
