@@ -10,6 +10,7 @@ const pool = new Pool({
 export async function GET(req: NextRequest) {
 	const { searchParams } = new URL(req.url)
     
+    const database = searchParams.get('database') || 'mediumHoney'
 	const id = searchParams.get('id')
 	const name = searchParams.get('name')
 	const origin = searchParams.get('origin')
@@ -42,7 +43,7 @@ export async function GET(req: NextRequest) {
 
 	const whereClause =
 		conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : ''
-	const query = `SELECT * FROM mediumHoney ${whereClause};` // Use smallHoney or bigHoney to change which db is should use
+	const query = `SELECT * FROM ${database} ${whereClause};` // Use smallHoney or bigHoney to change which db is should use
 
 	let client
 	try {
