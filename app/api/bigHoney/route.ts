@@ -5,7 +5,6 @@ import { Pool } from 'pg'
 const pool = new Pool({
 	connectionString:
 		'postgresql://postgres.smzybsfugnnuhmyiozvt:Steadying-Eatable8-Mammogram@aws-0-us-west-1.pooler.supabase.com:5432/postgres', // DONT CHANGE THIS. ITS THE SAME CONNECTION URL FOR BOTH SMALL AND BIG DB
-	max: 20,
 })
 
 export async function GET(req: NextRequest) {

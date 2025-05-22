@@ -56,7 +56,7 @@ export function HoneyTable({ title, apiEndpoint }: HoneyTableProps) {
 	useEffect(() => {
 		const params = new URLSearchParams()
 		fetchData(params)
-	}, [apiEndpoint]) // Only re-run if apiEndpoint changes
+	}, []) // Only re-run if apiEndpoint changes
 
 	const handleSearch = async () => {
 		const params = new URLSearchParams()
