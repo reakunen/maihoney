@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
 
 	const whereClause =
 		conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : ''
-	const query = `SELECT * FROM mediumHoney ${whereClause};` // Use smallHoney or bigHoney to change which db is should use
+	const query = `SELECT * FROM bigHoney ${whereClause};` // Use smallHoney or bigHoney to change which db is should use
 
 	let client
 	try {
