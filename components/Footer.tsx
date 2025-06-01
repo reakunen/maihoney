@@ -13,9 +13,7 @@ export default function Footer() {
 					</div>
 					<p className="text-[#666666] text-sm">
 						We are beekeepers that produce honey in our backyard! #savethebees
-
 					</p>
-
 				</div>
 				<div className="max-sm:hidden flex flex-col gap-4">
 					<h3 className="text-[#333333] font-bold">Quick Links</h3>
@@ -70,7 +68,7 @@ export default function Footer() {
 			</div>
 			<div className="container mx-auto px-4 md:px-6 mt-8 flex items-center justify-between">
 				<p className="text-[#666666] text-sm">
-					&copy; 2024 Maihoney. All rights reserved.
+					&copy; {new Date().getFullYear()} Maihoney. All rights reserved.
 				</p>
 				{/* <div className="flex items-center gap-4">
 					<Link
