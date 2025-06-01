@@ -11,6 +11,7 @@ import {
 	motion,
 } from 'framer-motion'
 import products from '@/constants/products'
+import { useShoppingCart } from 'use-shopping-cart'
 
 export const FlyoutNav = () => {
 	const [scrolled, setScrolled] = useState(false)
@@ -83,14 +84,18 @@ const NavLink = ({
 }
 
 const CTAs = () => {
-	
+	const { cartCount } = useShoppingCart()
+
 	return (
 		<div className="flex items-center gap-3">
-			<Link href={products.payment_link}>
-				<button className="flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]">
+			<Link href="/cart">
+				<button className="flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)] relative">
 					<FiShoppingCart fontSize={18} fontWeight={800} />
-					{/* <NavCart /> */}
-					{/* Buy Now */}
+					{(cartCount || 0) > 0 && (
+						<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+							{cartCount}
+						</span>
+					)}
 				</button>
 			</Link>
 		</div>
