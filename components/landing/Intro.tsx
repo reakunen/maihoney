@@ -12,11 +12,10 @@ export default function Intro() {
 		offset: ['start start', 'end start'],
 	})
 	const words = [
-		'organic   ',
-		'pure      ',
-		'premium   ',
-		'natural   ',
-		'unfiltered',
+		'delicious',
+		'authentic',
+		'pristine ',
+		'exquisite',
 	]
 	const y = useTransform(scrollYProgress, [0, 1], ['0vh', '50vh'])
 
@@ -45,8 +44,8 @@ export default function Intro() {
 				transition={{ duration: 1, ease: 'easeInOut' }}
 			>
 				<h1 className="text-white max-sm:text-4xl text-7xl font-bold w-[80vw]">
-					small, we make honey that is <br/> <FlipWords words={words} duration={2000} />{' '}
-					<br />
+					We make honey that is <br/> <FlipWords words={words} duration={2000} />{' '}
+
 					and of the highest quality!
 				</h1>
 			</motion.div>
