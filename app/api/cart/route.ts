@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 	try {
 		const body = await request.json()
 		// Handle cart operations like adding items, updating quantities, etc.
-		return NextResponse.json({ message: 'Item added to cart', data: body })
+		return NextResponse.json({ message: 'Item added to cart' })
 	} catch (error) {
 		return NextResponse.json(
 			{ error: 'Internal server error' },
