@@ -32,7 +32,7 @@ curl -X POST http://localhost:3000/api/test \
     }
   }'
 
-    curl -X POST https://www.maihoney.com/api/checkout \
+curl -X POST https://www.maihoney.com/api/checkout \
   -H "Content-Type: application/json" \
   -d '{
     "cartDetails": {
