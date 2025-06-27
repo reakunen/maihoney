@@ -112,7 +112,8 @@ export default function Products() {
 					</Link>
 					<button
 						onClick={handleAddToCart}
-						className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)]"
+						disabled
+						className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)] opacity-50 cursor-not-allowed"
 					>
 						Add to cart
 					</button>
