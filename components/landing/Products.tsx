@@ -32,17 +32,16 @@ export default function Products() {
 	}
 
 	const handleAddToCart = () => {
-		const product = {
-			id: products.id,
-			name: products.name,
-			price: products.price,
-			currency: products.currency,
-			image: products.image[0],
-			description: 'Premium organic honey, 16oz jar',
-		}
+		toast.error("Orders are currently closed - Brian is out of the country until 12/31. We apologize for any inconvenience.", {
+			duration: 5000,
+		})
+	}
 
-		addItem(product)
-		toast.success('Added to cart!')
+	const handleBuyNow = (e: React.MouseEvent) => {
+		e.preventDefault()
+		toast.error("Orders are currently closed - Brian is out of the country until 12/31. We apologize for any inconvenience.", {
+			duration: 5000,
+		})
 	}
 
 	return (
@@ -103,13 +102,12 @@ export default function Products() {
 					</p>
 				</div>
 				<div className="flex gap-6">
-					<Link
-						aria-disabled
-						href={products.payment_link}
-						className="flex-1 py-3 px-6 text-center bg-yellow-300 text-yellow-950 rounded-lg border-2 border-yellow-300 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(250,204,21)]"
+					<button
+						onClick={handleBuyNow}
+						className="flex-1 py-3 px-6 text-center bg-yellow-300 text-yellow-950 rounded-lg border-2 border-yellow-300 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(250,204,21)] opacity-50 cursor-not-allowed"
 					>
 						Buy it now
-					</Link>
+					</button>
 					<button
 						onClick={handleAddToCart}
 						disabled
