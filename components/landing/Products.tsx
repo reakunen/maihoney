@@ -32,16 +32,21 @@ export default function Products() {
 	}
 
 	const handleAddToCart = () => {
-		toast.error("Orders are currently closed - Brian is out of the country until 12/31. We apologize for any inconvenience.", {
-			duration: 5000,
+		addItem({
+			...products,
+			image: products.image[0]
 		})
+		toast.success('Added to cart!')
 	}
 
 	const handleBuyNow = (e: React.MouseEvent) => {
 		e.preventDefault()
-		toast.error("Orders are currently closed - Brian is out of the country until 12/31. We apologize for any inconvenience.", {
-			duration: 5000,
+		addItem({
+			...products,
+			image: products.image[0]
 		})
+		// Redirect to checkout or cart page
+		window.location.href = '/cart'
 	}
 
 	return (
@@ -104,14 +109,13 @@ export default function Products() {
 				<div className="flex gap-6">
 					<button
 						onClick={handleBuyNow}
-						className="flex-1 py-3 px-6 text-center bg-yellow-300 text-yellow-950 rounded-lg border-2 border-yellow-300 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(250,204,21)] opacity-50 cursor-not-allowed"
+						className="flex-1 py-3 px-6 text-center bg-yellow-300 text-yellow-950 rounded-lg border-2 border-yellow-300 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(250,204,21)]"
 					>
 						Buy it now
 					</button>
 					<button
 						onClick={handleAddToCart}
-						disabled
-						className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)] opacity-50 cursor-not-allowed"
+						className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)]"
 					>
 						Add to cart
 					</button>

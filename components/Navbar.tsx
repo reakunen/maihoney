@@ -89,16 +89,14 @@ const CTAs = () => {
 
 	const handleCartClick = (e: React.MouseEvent) => {
 		e.preventDefault()
-		toast.error("Orders are currently closed - Brian is out of the country until 12/31. We apologize for any inconvenience.", {
-			duration: 5000,
-		})
+		window.location.href = '/cart'
 	}
 
 	return (
 		<div className="flex items-center gap-3">
-			<button 
+			<button
 				onClick={handleCartClick}
-				className="flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)] relative opacity-50 cursor-not-allowed"
+				className="flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)] relative"
 			>
 				<FiShoppingCart fontSize={18} fontWeight={800} />
 				{/* {(cartCount || 0) > 0 && (
