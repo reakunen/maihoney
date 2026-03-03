@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Background from '@/public/images/img7.jpg'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
-import { Trash2, Plus, Minus } from 'lucide-react'
+import { Trash2, Plus, Minus, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import { loadStripe } from '@stripe/stripe-js'
 import { useState } from 'react'
@@ -86,8 +86,8 @@ export default function CartPage() {
 	}
 
 	return (
-		<main className="min-h-screen bg-gray-50">
-			<div className="relative h-56 w-full overflow-hidden md:h-64">
+		<main className="min-h-screen bg-stone-50">
+			<div className="relative h-48 w-full overflow-hidden md:h-56">
 				<Image
 					src={Background}
 					fill
@@ -95,81 +95,62 @@ export default function CartPage() {
 					style={{ objectFit: 'cover' }}
 					priority
 				/>
-				<div className="absolute inset-0 bg-black/45" />
-				<div className="absolute inset-0">
-					<div className="mx-auto flex h-full max-w-6xl items-center justify-center px-4">
-						<div className="text-center">
-							<h1 className="mb-2 text-4xl font-bold text-white md:text-5xl">
-								Cart
-							</h1>
-						</div>
+				<div className="absolute inset-0 bg-black/40" />
+				<div className="absolute inset-0 mx-auto flex h-full max-w-5xl items-center justify-center px-4">
+					<div className="text-center">
+						<h1 className="text-4xl font-bold text-white md:text-5xl">Cart</h1>
 					</div>
 				</div>
 			</div>
 
-			<div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
+			<div className="mx-auto max-w-5xl px-4 py-8 md:py-12">
 				{cartItems.length === 0 ? (
-					<div className="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm md:p-14">
-						<div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gray-100">
-							<svg
-								className="h-12 w-12 text-amber-700"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5m6-5V7a2 2 0 00-2-2H9a2 2 0 00-2 2v1"
-								/>
-							</svg>
+					<div className="rounded-2xl border border-stone-200 bg-white p-10 text-center md:p-12">
+						<div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-stone-100">
+							<ShoppingCart className="h-8 w-8 text-stone-600" />
 						</div>
-						<h2 className="mb-3 text-3xl font-bold text-gray-900">
-							Your cart is empty
-						</h2>
-						<p className="mx-auto mb-8 max-w-xl text-gray-600">
+						<h2 className="mb-2 text-3xl font-bold text-stone-900">Your cart is empty</h2>
+						<p className="mx-auto mb-7 max-w-lg text-stone-600">
 							Add some honey to your cart and come back when you are ready to
 							check out.
 						</p>
-						<Link
-							href="/"
-							className="inline-block rounded-lg bg-yellow-400 px-7 py-3 font-semibold text-yellow-900 transition-colors hover:bg-yellow-500"
+						<Button
+							asChild
+							className="relative flex items-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:bg-yellow-300 hover:text-neutral-800 hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]"
 						>
-							Continue shopping
-						</Link>
+						<Link href="/">Continue shopping</Link>
+						</Button>
 					</div>
 				) : (
-					<div className="grid gap-8 lg:grid-cols-3">
-						<div className="lg:col-span-2">
-							<div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-[8px_8px_0px_0px_rgb(66,32,6)] md:p-8">
-								<div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-									<h2 className="text-2xl font-bold text-gray-900">
-										Cart Items
-									</h2>
+					<div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+						<div className="space-y-4">
+							<div className="rounded-2xl border border-stone-200 bg-white p-4 md:p-6">
+								<div className="flex flex-wrap items-end justify-between gap-3">
+									<div>
+										<h2 className="text-2xl font-bold text-stone-900">Cart items</h2>
+									</div>
 								</div>
-								<div className="space-y-4">
+								<div className="mt-5 divide-y divide-stone-200">
 									{cartItems.map((item) => (
 										<div
 											key={item.id}
-											className="rounded-xl border border-gray-200 bg-white p-5"
+											className="py-4 first:pt-0 last:pb-0"
 										>
-											<div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-												<div className="flex min-w-0 items-center gap-4 md:gap-5">
-													<div className="relative h-24 w-24 flex-shrink-0 rounded-lg">
+											<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+												<div className="flex min-w-0 items-center gap-4">
+													<div className="relative h-20 w-20 flex-shrink-0 rounded-lg bg-stone-100">
 														<Image
 															src={item.image || '/images/honeybottle.png'}
 															alt={item.name}
 															fill
-															className="object-contain p-1"
+															className="object-contain p-2"
 														/>
 													</div>
 													<div className="min-w-0">
-														<h3 className="truncate text-lg font-semibold text-gray-900">
+														<h3 className="truncate text-base font-semibold text-stone-900 md:text-lg">
 															{item.name}
 														</h3>
-														{/* <p className="text-sm text-gray-500">Unit price</p> */}
-														<p className="font-medium text-gray-800">
+														<p className="font-medium text-stone-900">
 															{formatCurrencyString({
 																value: item.price,
 																currency: item.currency,
@@ -177,45 +158,39 @@ export default function CartPage() {
 														</p>
 													</div>
 												</div>
-												<div className="ml-auto flex items-center gap-3">
-													<div className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white p-2">
+												<div className="flex items-center justify-between gap-3 sm:justify-end">
+													<div className="flex items-center rounded-lg border border-stone-300">
 														<button
 															onClick={() => decrementItem(item.id)}
-															className="rounded-md p-2 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed"
+															className="rounded-l-lg p-2 transition-colors hover:bg-stone-100 disabled:cursor-not-allowed"
 															disabled={item.quantity <= 1}
+															aria-label={`Decrease quantity of ${item.name}`}
 														>
 															<Minus
 																size={16}
 																className={
 																	item.quantity <= 1
-																		? 'text-gray-300'
-																		: 'text-gray-600'
+																		? 'text-stone-300'
+																		: 'text-stone-700'
 																}
 															/>
 														</button>
-														<span className="w-8 text-center font-semibold text-gray-900">
+														<span className="w-8 text-center text-sm font-semibold text-stone-900">
 															{item.quantity}
 														</span>
 														<button
 															onClick={() => incrementItem(item.id)}
-															className="rounded-md p-2 transition-colors hover:bg-gray-100"
+															className="rounded-r-lg p-2 transition-colors hover:bg-stone-100"
+															aria-label={`Increase quantity of ${item.name}`}
 														>
-															<Plus size={16} className="text-gray-600" />
+															<Plus size={16} className="text-stone-700" />
 														</button>
 													</div>
-													{/* <div className="w-24 text-right">
-														<p className="text-xs text-gray-500">Line total</p>
-														<p className="font-semibold text-gray-900">
-															{formatCurrencyString({
-																value: item.price * item.quantity,
-																currency: item.currency,
-															})}
-														</p>
-													</div> */}
 													<button
 														onClick={() => removeItem(item.id)}
-														className="rounded-lg p-3 text-red-500 transition-colors hover:bg-red-50"
+														className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50"
 														title="Remove item"
+														aria-label={`Remove ${item.name} from cart`}
 													>
 														<Trash2 size={18} />
 													</button>
@@ -227,53 +202,58 @@ export default function CartPage() {
 							</div>
 						</div>
 
-						<div className="lg:col-span-1">
-							<div className="sticky top-6 space-y-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-[8px_8px_0px_0px_rgb(66,32,6)]">
-								<h3 className="text-2xl font-bold text-gray-900">
-									Order Summary
-								</h3>
-								<div className="rounded-xl bg-gray-50 p-4">
-									<div className="mb-3 flex items-center justify-between border-b border-gray-200 pb-3">
-										<span className="text-gray-600">
+						<div>
+							<div className="sticky top-6 space-y-4 rounded-2xl border border-stone-200 bg-white p-6">
+								<h3 className="text-xl font-bold text-stone-900">Order summary</h3>
+								<div className="space-y-3 rounded-xl bg-stone-100 p-4">
+									<div className="flex items-center justify-between">
+										<span className="text-stone-700">
 											Subtotal ({uniqueCount} item{uniqueCount !== 1 ? 's' : ''}
 											)
 										</span>
-										<span className="font-semibold text-gray-900">
+										<span className="font-semibold text-stone-900">
 											{formatCurrencyString({
 												value: totalPrice || 0,
 												currency: 'USD',
 											})}
 										</span>
 									</div>
-									<div className="mb-2 flex justify-between py-1">
-										<span className="text-sm text-gray-600">Shipping</span>
-										<span className="text-sm text-gray-700">
+									<div className="flex justify-between text-sm">
+										<span className="text-stone-700">Shipping</span>
+										<span className="text-stone-700">
 											Calculated at checkout
 										</span>
 									</div>
-									<div className="rounded-lg bg-white p-3">
-										<p className="mt-1 text-xs text-gray-500">
-											Final amount is confirmed by Stripe on the next step.
-										</p>
+									<div className="border-t border-stone-200 pt-3">
+										<div className="flex items-center justify-between font-semibold text-stone-900">
+											<span>Estimated total</span>
+											<span>
+												{formatCurrencyString({
+													value: totalPrice || 0,
+													currency: 'USD',
+												})}
+											</span>
+										</div>
 									</div>
 								</div>
 
-								<button
+								<Button
 									onClick={handleCheckout}
 									disabled={isLoading}
-									className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)]"
-								>
+									aria-busy={isLoading}
+									className="relative flex w-full items-center justify-center gap-2 rounded-lg border-2 border-yellow-300 bg-yellow-300 px-4 py-2 text-neutral-800 transition-all duration-500 ease-in-out hover:bg-yellow-300 hover:text-neutral-800 hover:shadow-[8px_8px_0px_0px_rgba(250,204,21,1)]"
+									>
 									{isLoading ? (
 										<div className="flex items-center justify-center gap-2">
-											<div className="h-5 w-5 animate-spin rounded-full border-2 border-yellow-900/30 border-t-yellow-900"></div>
+											<div className="h-4 w-4 animate-spin rounded-full border-2 border-yellow-900/30 border-t-yellow-900"></div>
 											Processing...
 										</div>
 									) : (
-										'Proceed to Checkout'
+										'Proceed to checkout'
 									)}
-								</button>
+								</Button>
 
-								<div className="text-center text-sm text-gray-600">
+								<div className="text-center text-sm text-stone-600">
 									Secure checkout powered by Stripe.
 								</div>
 							</div>

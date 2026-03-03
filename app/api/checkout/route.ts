@@ -2,49 +2,59 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+const HONEY_PRODUCT_ID = 'prod_QhvHmLheY7XYdV'
+
+function getAppBaseUrl(request: NextRequest) {
+	const configuredUrl =
+		process.env.NEXT_PUBLIC_URL ||
+		(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '')
+
+	if (configuredUrl) {
+		return configuredUrl.replace(/\/$/, '')
+	}
+
+	return new URL(request.url).origin
+}
+
+async function getCheckoutPriceId(productId: string) {
+	const product = await stripe.products.retrieve(productId)
+
+	if ('deleted' in product && product.deleted) {
+		throw new Error(`Stripe product not found: ${productId}`)
+	}
+
+	if (typeof product.default_price === 'string' && product.default_price) {
+		return product.default_price
+	}
+
+	const prices = await stripe.prices.list({
+		product: productId,
+		active: true,
+		limit: 1,
+	})
+
+	if (!prices.data.length) {
+		throw new Error(`No active price found for product: ${productId}`)
+	}
+
+	return prices.data[0].id
+}
 
 export async function POST(request: NextRequest) {
 	try {
 		const { cartDetails } = await request.json()
+		const appBaseUrl = getAppBaseUrl(request)
 
 		if (!cartDetails || Object.keys(cartDetails).length === 0) {
 			return NextResponse.json({ error: 'No items in cart' }, { status: 400 })
 		}
 
+		const checkoutPriceId = await getCheckoutPriceId(HONEY_PRODUCT_ID)
+
 		// Convert cart items to Stripe line items
 		const lineItems = Object.values(cartDetails).map((item: any) => {
-			// Handle image URL - ensure it's absolute or remove it if invalid
-			let imageUrl = null
-			if (item.image) {
-				if (
-					item.image.startsWith('http://') ||
-					item.image.startsWith('https://')
-				) {
-					// Already an absolute URL
-					imageUrl = item.image
-				} else if (item.image.startsWith('/')) {
-					// Relative URL - convert to absolute
-					imageUrl = `${process.env.NEXT_PUBLIC_URL}${item.image}`
-				}
-				// If it's neither absolute nor relative path starting with /, skip the image
-			}
-
-			const productData: any = {
-				name: item.name,
-				description: item.description || 'Premium Honey',
-			}
-
-			// Only add images if we have a valid URL
-			if (imageUrl) {
-				productData.images = [imageUrl]
-			}
-
 			return {
-				price_data: {
-					currency: item.currency,
-					product_data: productData,
-					unit_amount: item.price,
-				},
+				price: checkoutPriceId,
 				quantity: item.quantity,
 			}
 		})
@@ -54,8 +64,8 @@ export async function POST(request: NextRequest) {
 			payment_method_types: ['card'],
 			line_items: lineItems,
 			mode: 'payment',
-			success_url: `${process.env.NEXT_PUBLIC_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${process.env.NEXT_PUBLIC_URL}/cart`,
+			success_url: `${appBaseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+			cancel_url: `${appBaseUrl}/cart`,
 			shipping_address_collection: {
 				allowed_countries: ['US'],
 			},
