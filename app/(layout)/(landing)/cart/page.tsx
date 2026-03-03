@@ -3,11 +3,7 @@
 import Image from 'next/image'
 import Background from '@/public/images/img7.jpg'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
-import {
-	Trash2,
-	Plus,
-	Minus,
-} from 'lucide-react'
+import { Trash2, Plus, Minus } from 'lucide-react'
 import Link from 'next/link'
 import { loadStripe } from '@stripe/stripe-js'
 import { useState } from 'react'
@@ -15,7 +11,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 
 const stripePromise = loadStripe(
-	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
 )
 
 export default function CartPage() {
@@ -82,7 +78,7 @@ export default function CartPage() {
 			toast.error(
 				error instanceof Error
 					? error.message
-					: 'Something went wrong. Please try again.'
+					: 'Something went wrong. Please try again.',
 			)
 		} finally {
 			setIsLoading(false)
@@ -115,30 +111,42 @@ export default function CartPage() {
 				{cartItems.length === 0 ? (
 					<div className="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm md:p-14">
 						<div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gray-100">
-								<svg className="h-12 w-12 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5m6-5V7a2 2 0 00-2-2H9a2 2 0 00-2 2v1" />
-								</svg>
-							</div>
-							<h2 className="mb-3 text-3xl font-bold text-gray-900">
-								Your cart is empty
-							</h2>
-							<p className="mx-auto mb-8 max-w-xl text-gray-600">
-								Add some honey to your cart and come back when you are ready to
-								check out.
-							</p>
-							<Link
-								href="/"
-								className="inline-block rounded-lg bg-yellow-400 px-7 py-3 font-semibold text-yellow-900 transition-colors hover:bg-yellow-500"
+							<svg
+								className="h-12 w-12 text-amber-700"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
 							>
-								Continue shopping
-							</Link>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5m6-5V7a2 2 0 00-2-2H9a2 2 0 00-2 2v1"
+								/>
+							</svg>
+						</div>
+						<h2 className="mb-3 text-3xl font-bold text-gray-900">
+							Your cart is empty
+						</h2>
+						<p className="mx-auto mb-8 max-w-xl text-gray-600">
+							Add some honey to your cart and come back when you are ready to
+							check out.
+						</p>
+						<Link
+							href="/"
+							className="inline-block rounded-lg bg-yellow-400 px-7 py-3 font-semibold text-yellow-900 transition-colors hover:bg-yellow-500"
+						>
+							Continue shopping
+						</Link>
 					</div>
 				) : (
 					<div className="grid gap-8 lg:grid-cols-3">
 						<div className="lg:col-span-2">
-							<div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+							<div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-[8px_8px_0px_0px_rgb(66,32,6)] md:p-8">
 								<div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-									<h2 className="text-2xl font-bold text-gray-900">Cart Items</h2>
+									<h2 className="text-2xl font-bold text-gray-900">
+										Cart Items
+									</h2>
 								</div>
 								<div className="space-y-4">
 									{cartItems.map((item) => (
@@ -220,12 +228,15 @@ export default function CartPage() {
 						</div>
 
 						<div className="lg:col-span-1">
-							<div className="sticky top-6 space-y-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-								<h3 className="text-2xl font-bold text-gray-900">Order Summary</h3>
+							<div className="sticky top-6 space-y-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-[8px_8px_0px_0px_rgb(66,32,6)]">
+								<h3 className="text-2xl font-bold text-gray-900">
+									Order Summary
+								</h3>
 								<div className="rounded-xl bg-gray-50 p-4">
 									<div className="mb-3 flex items-center justify-between border-b border-gray-200 pb-3">
 										<span className="text-gray-600">
-											Subtotal ({uniqueCount} item{uniqueCount !== 1 ? 's' : ''})
+											Subtotal ({uniqueCount} item{uniqueCount !== 1 ? 's' : ''}
+											)
 										</span>
 										<span className="font-semibold text-gray-900">
 											{formatCurrencyString({
@@ -251,7 +262,7 @@ export default function CartPage() {
 									onClick={handleCheckout}
 									disabled={isLoading}
 									className="flex-1 py-3 px-6 bg-brown-500 text-neutral-900 rounded-lg border-2 border-yellow-950 transition-transform duration-300 ease-out transform hover:scale-105 shadow-[8px_8px_0px_0px_rgb(66,32,6)]"
-									>
+								>
 									{isLoading ? (
 										<div className="flex items-center justify-center gap-2">
 											<div className="h-5 w-5 animate-spin rounded-full border-2 border-yellow-900/30 border-t-yellow-900"></div>
@@ -269,7 +280,6 @@ export default function CartPage() {
 						</div>
 					</div>
 				)}
-
 			</div>
 		</main>
 	)
