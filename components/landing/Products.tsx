@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { UploadIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import products from '@/constants/products'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
 import {
@@ -16,7 +17,15 @@ import {
 } from '@/components/ui/carousel'
 
 export default function Products() {
+	const router = useRouter()
 	const { addItem } = useShoppingCart()
+	const cartProduct = {
+		sku: products.id,
+		name: products.name,
+		price: products.price,
+		currency: products.currency,
+		image: products.image[0],
+	}
 
 	const handleShare = () => {
 		const currentUrl = window.location.href // Get the current URL
@@ -32,21 +41,13 @@ export default function Products() {
 	}
 
 	const handleAddToCart = () => {
-		addItem({
-			...products,
-			image: products.image[0]
-		})
+		addItem(cartProduct)
 		toast.success('Added to cart!')
 	}
 
-	const handleBuyNow = (e: React.MouseEvent) => {
-		e.preventDefault()
-		addItem({
-			...products,
-			image: products.image[0]
-		})
-		// Redirect to checkout or cart page
-		window.location.href = '/cart'
+	const handleBuyNow = () => {
+		addItem(cartProduct)
+		router.push('/cart')
 	}
 
 	return (
